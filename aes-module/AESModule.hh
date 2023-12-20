@@ -20,20 +20,17 @@ public:
     ~AESModule();
 
     // input and output
-    using INPUT_TYPE = std::vector<unsigned char>;
-    using OUTPUT_TYPE = std::vector<unsigned char>;
+    typedef std::vector<unsigned char> INPUT_TYPE;
+    typedef std::vector<unsigned char> OUTPUT_TYPE;
     // key and iv
-    using DEFAULT_TYPE = std::vector<unsigned char>;
-    using TEST_TYPE = unsigned char*;
-
+    typedef std::vector<unsigned char> DEFAULT_TYPE;
+    typedef unsigned char* TEST_TYPE;
     // encryption and decryption
     OUTPUT_TYPE encrypt(INPUT_TYPE &input, DEFAULT_TYPE &key, DEFAULT_TYPE &iv);
     INPUT_TYPE decrypt(INPUT_TYPE &input, DEFAULT_TYPE &key, DEFAULT_TYPE &iv);
-
     // hex
     DEFAULT_TYPE ucharToHex(const DEFAULT_TYPE& data) const;
     OUTPUT_TYPE hexStringToUchar(const DEFAULT_TYPE& hexCiphertext) const; 
-
     // random key and iv generation
     DEFAULT_TYPE generateKey();
     DEFAULT_TYPE generateIv();
