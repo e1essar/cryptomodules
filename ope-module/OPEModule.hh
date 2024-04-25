@@ -19,9 +19,10 @@ public:
     typedef std::string KEY_TYPE;
     typedef int DEFAULT_TYPE;
     using TEST_TYPE = NTL::ZZ;
+    typedef std::string STRING_TYPE;
 
-    TEST_TYPE encrypt(INPUT_TYPE input, KEY_TYPE key);
-    TEST_TYPE decrypt(TEST_TYPE input, KEY_TYPE key);
+    STRING_TYPE encrypt(INPUT_TYPE input, KEY_TYPE key);
+    INPUT_TYPE decrypt(STRING_TYPE input, KEY_TYPE key);
 
     KEY_TYPE generateKey();
 
