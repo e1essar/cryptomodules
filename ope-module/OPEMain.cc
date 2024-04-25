@@ -6,6 +6,14 @@
 
 using namespace std;
 
+bool compareStrings(const string& s1, const string& s2) {
+    if (s1.length() != s2.length()) {
+        return s1.length() < s2.length();
+    }
+    
+    return s1 < s2;
+}
+
 void runTests(int a, int b) {
     OPEModule opeModule;
     OPEModule::KEY_TYPE key = opeModule.generateKey();
@@ -24,7 +32,8 @@ void runTests(int a, int b) {
     auto durationDecrypt = chrono::duration_cast<chrono::microseconds>(endDecrypt - startDecrypt);
     cout << "Decryption time: " << durationDecrypt.count() << " microseconds" << endl;
 
-    if (enc1 < enc2) {
+    cout << enc1 << "  " << enc2 << endl;
+    if (compareStrings(enc1, enc2)) {
         cout << "Encryption test: OK" << endl;
     } else {
         cout << "Encryption test: FAIL" << endl;
@@ -51,6 +60,40 @@ int main() {
         runTests(pair.first, pair.second);
         cout << endl;
     }
+
+    /*
+    Testing pair (45, 46):
+    Encryption time: 4637 microseconds
+    Decryption time: 189 microseconds
+    219464705085  219897038332
+    Encryption test: OK
+    Decryption test for a: OK
+    Decryption test for b: OK
+    
+    Testing pair (99, 78):
+    Encryption time: 4576 microseconds
+    Decryption time: 162 microseconds
+    503588909781  420980835807
+    Encryption test: FAIL
+    Decryption test for a: OK
+    Decryption test for b: OK
+    
+    Testing pair (123, 567):
+    Encryption time: 5276 microseconds
+    Decryption time: 173 microseconds
+    614194890946  2462328561069
+    Encryption test: OK
+    Decryption test for a: OK
+    Decryption test for b: OK
+    
+    Testing pair (-12, -5):
+    Encryption time: 4305 microseconds
+    Decryption time: 150 microseconds
+    2343650153  6006721824
+    Encryption test: OK
+    Decryption test for a: FAIL
+    Decryption test for b: FAIL
+    */
 
     return 0;
 }
