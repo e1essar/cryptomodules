@@ -8,23 +8,30 @@ OPEModule::~OPEModule() {
 
 }
 
-OPEModule::TEST_TYPE OPEModule::encrypt(INPUT_TYPE input, KEY_TYPE key) {
+OPEModule::STRING_TYPE OPEModule::encrypt(INPUT_TYPE input, KEY_TYPE key) {
     TEST_TYPE ciphertext = opeInstance.encrypt(input);
+    STRING_TYPE ciphertextStr = StringFromZZ(ciphertext);
 
-    cout << "input = " << input << endl;
-    cout << "enc = " << ciphertext << endl;
+    //cout << "input = " << input << endl;
+    //cout << "enc = " << ciphertext << endl;
 
-    return ciphertext;
+    return ciphertextStr;
 }
 
-OPEModule::TEST_TYPE OPEModule::decrypt(TEST_TYPE input, KEY_TYPE key) {
-    TEST_TYPE plaintext = opeInstance.decrypt(input);
+OPEModule::INPUT_TYPE OPEModule::decrypt(STRING_TYPE input, KEY_TYPE key) {
+    TEST_TYPE ciphertext = ZZFromString(input);
 
-    cout << "input = " << input << endl;
-    cout << "dec = " << plaintext << endl;
+    TEST_TYPE plaintext = opeInstance.decrypt(ciphertext);
 
-    return plaintext;
+    STRING_TYPE plaintextStr = DecStringFromZZ(plaintext);
+    int plaintextInt = std::stoi(plaintextStr);
+
+    //cout << "input = " << input << endl;
+    //cout << "dec = " << plaintextInt << endl;
+
+    return plaintextInt;
 }
+
 
 OPEModule::KEY_TYPE OPEModule::generateKey() {
     std::random_device rd;
