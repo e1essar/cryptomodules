@@ -14,15 +14,18 @@ public:
     ~OPEModule();
     
     typedef int INPUT_TYPE;
-    typedef int OUTPUT_TYPE;
+    typedef unsigned long OUTPUT_TYPE;
 
     typedef std::string KEY_TYPE;
+    typedef std::string STRING_TYPE;
     typedef int DEFAULT_TYPE;
     using TEST_TYPE = NTL::ZZ;
-    typedef std::string STRING_TYPE;
 
-    STRING_TYPE encrypt(INPUT_TYPE input, KEY_TYPE key);
-    INPUT_TYPE decrypt(STRING_TYPE input, KEY_TYPE key);
+    OUTPUT_TYPE encrypt(INPUT_TYPE input, KEY_TYPE key);
+    INPUT_TYPE decrypt(OUTPUT_TYPE input, KEY_TYPE key);
+
+    STRING_TYPE encryptS(INPUT_TYPE input, KEY_TYPE key);
+    INPUT_TYPE decryptS(STRING_TYPE input, KEY_TYPE key);
 
     KEY_TYPE generateKey();
 
