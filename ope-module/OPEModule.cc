@@ -8,28 +8,40 @@ OPEModule::~OPEModule() {
 
 }
 
-OPEModule::STRING_TYPE OPEModule::encrypt(INPUT_TYPE input, KEY_TYPE key) {
-    TEST_TYPE ciphertext = opeInstance.encrypt(input);
-    STRING_TYPE ciphertextStr = StringFromZZ(ciphertext);
+OPEModule::OUTPUT_TYPE OPEModule::encrypt(INPUT_TYPE input, KEY_TYPE key) {
+    OUTPUT_TYPE ciphertext = to_ulong(opeInstance.encrypt(input));
 
     //cout << "input = " << input << endl;
-    //cout << "enc = " << ciphertext << endl;
+    //cout << "enc = " << ciphertextLong << endl;
 
-    return ciphertextStr;
+    return ciphertext;
 }
 
-OPEModule::INPUT_TYPE OPEModule::decrypt(STRING_TYPE input, KEY_TYPE key) {
-    TEST_TYPE ciphertext = ZZFromString(input);
-
-    TEST_TYPE plaintext = opeInstance.decrypt(ciphertext);
-
-    STRING_TYPE plaintextStr = DecStringFromZZ(plaintext);
-    int plaintextInt = std::stoi(plaintextStr);
+OPEModule::INPUT_TYPE OPEModule::decrypt(OUTPUT_TYPE input, KEY_TYPE key) {
+    OUTPUT_TYPE plaintext = to_int(opeInstance.decrypt(NTL::to_ZZ(input)));
 
     //cout << "input = " << input << endl;
     //cout << "dec = " << plaintextInt << endl;
 
-    return plaintextInt;
+    return plaintext;
+}
+
+OPEModule::STRING_TYPE OPEModule::encryptS(INPUT_TYPE input, KEY_TYPE key) {
+    STRING_TYPE ciphertext = DecStringFromZZ(opeInstance.encrypt(input));
+
+    //cout << "input = " << input << endl;
+    //cout << "enc = " << ciphertext << endl;
+
+    return ciphertext;
+}
+
+OPEModule::INPUT_TYPE OPEModule::decryptS(STRING_TYPE input, KEY_TYPE key) {
+    INPUT_TYPE plaintext = std::stoi(DecStringFromZZ(opeInstance.decrypt(ZZFromDecString(input))));
+
+    //cout << "input = " << input << endl;
+    //cout << "dec = " << plaintextInt << endl;
+
+    return plaintext;
 }
 
 
