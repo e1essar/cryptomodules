@@ -91,7 +91,7 @@ void runTestsString(uint a, uint b) {
 }
 
 int main() {
-     vector<pair<uint, uint>> pairsToTest = {{45, 50}, {99, 78}, {123, 567}, {4294967285, 4294967290}};
+     vector<pair<uint, uint>> pairsToTest = {{45, 50}, {99, 78}, {123, 567}, {2147483645, 2147483646}};
 
     for (const auto& pair : pairsToTest) {
         cout << "Testing pair (" << pair.first << ", " << pair.second << "):" << endl << endl;
@@ -106,75 +106,75 @@ int main() {
 
     /*
     Testing pair (45, 50):
-
+    
     StringTest:
-    Encryption time: 4828 microseconds
-    Decryption time: 346 microseconds
+    Encryption time: 5122 microseconds
+    Decryption time: 142 microseconds
     219464705085  240746831791
     Encryption test: OK
     Decryption test for a: OK
     Decryption test for b: OK
-
+    
     LongTest:
-    Encryption time: 4920 microseconds
-    Decryption time: 164 microseconds
+    Encryption time: 3557 microseconds
+    Decryption time: 213 microseconds
     219464705085  240746831791
     Encryption test: OK
     Decryption test for a: OK
     Decryption test for b: OK
-
+    
     Testing pair (99, 78):
-
+    
     StringTest:
-    Encryption time: 4106 microseconds
-    Decryption time: 136 microseconds
+    Encryption time: 3606 microseconds
+    Decryption time: 127 microseconds
     503588909781  420980835807
     Encryption test: FAIL
     Decryption test for a: OK
     Decryption test for b: OK
-
+    
     LongTest:
-    Encryption time: 3375 microseconds
-    Decryption time: 125 microseconds
+    Encryption time: 3702 microseconds
+    Decryption time: 126 microseconds
     503588909781  420980835807
     Encryption test: FAIL
     Decryption test for a: OK
     Decryption test for b: OK
-
+    
     Testing pair (123, 567):
-
+    
     StringTest:
-    Encryption time: 3969 microseconds
-    Decryption time: 135 microseconds
+    Encryption time: 4342 microseconds
+    Decryption time: 229 microseconds
     614194890946  2462328561069
     Encryption test: OK
     Decryption test for a: OK
     Decryption test for b: OK
-
+    
     LongTest:
-    Encryption time: 4029 microseconds
-    Decryption time: 132 microseconds
+    Encryption time: 3973 microseconds
+    Decryption time: 233 microseconds
     614194890946  2462328561069
     Encryption test: OK
     Decryption test for a: OK
     Decryption test for b: OK
-
-    Testing pair (4294967285, 4294967290):
-
+    
+    Testing pair (2147483645, 2147483646):
+    
     StringTest:
-    Encryption time: 3529 microseconds
-    Decryption time: 121 microseconds
-    5614143207  5808229430
+    Encryption time: 3490 microseconds
+    Decryption time: 224 microseconds
+    9223058009514190446  9223058014137620870
     Encryption test: OK
-    Decryption test for a: FAIL
-    Decryption test for b: FAIL
-
+    Decryption test for a: OK
+    Decryption test for b: OK
+    
     LongTest:
-    Encryption time: 3358 microseconds
-    Decryption time: 115 microseconds
-    5614143207  5808229430
+    Encryption time: 3647 microseconds
+    Decryption time: 128 microseconds
+    9223058009514190446  9223058014137620870
     Encryption test: OK
-    Decryption test for a: FAIL
-    Decryption test for b: FAIL
+    Decryption test for a: OK
+    Decryption test for b: OK
     */
 }
